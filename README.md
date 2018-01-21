@@ -12,7 +12,7 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 - body-parser
 - Embedded JavaScript (ejs)
 
-  # What is?
+# What is?
 
 - Node.js: a JavaScript runtime environment, the lovely folks that created Node made it so that we can run JavaScript as server side-code. May God bless their souls.
 - Express: a framework for building web applications using Node.js by making server creation a simpler process.
@@ -21,11 +21,11 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 - Nodemon: is a utility that will monitor for any changes in your source code and automatically restart your server. Perfect for development.
 - Middleware: is computer software that provides services to software applications beyond those available from the operating system. It can be described as "software glue".
 
-  # Step 1 / Create and start your project
+# Step 1 / Create and start your project
 
    Create your directory through the command line: `mkdir simple-crud` Initialize your project: `npm init`
 
-  # Step 2 / Server and using express
+# Step 2 / Server and using express
 
    First we gotta install Express and include it in our dependencies `npm install express --save` Then create your server file. `touch server.js` Now let's put express in that file:
 
@@ -39,7 +39,7 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
   We call on express and then initialize it on app. We also want to communicate with the browser so that they can communicate, we do that with the listen method that comes with Express. Let's check what we have now so far. Go to the console and run `node server.js`, then go to your browser and navigate to localhost:3000\. If you see a "Cannot GET /" message we're on the right track. This means we're communicating to the express server through the browser, but there's nothing to show since we haven't send anything to the browser.
 
-  # Step 3 / CRUD - READ(GET)
+# Step 3 / CRUD - READ(GET)
 
    Whenever we visit a website the browser sends a **GET** request to the server to perform a READ operation. This is why we are seeing the "cannot get/" error, it's trying to **GET** but we're not GIVING (not a real term) yet - because have nothing to send back at the moment. To handle **GET** requests we use the `get` method:
 
@@ -88,7 +88,7 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
   Now when we restart the server and navigate to `localhost:3000` we will see the html file. And this is how Express handles **GET** (READ) in short. Up next, to speed up the process we will install something to avoid having to manually restart the server every time we make a change.
 
-  # Step 4 / Nodemon
+# Step 4 / Nodemon
 
    Basically, Nodemon restarts the server automatically whenever you save a file that the server uses. `npm install nodemon --save-dev` We're using `--save-dev` in this instance because this is a dependency exclusive for the development environment, so we save it as a devDependency. If you want to run nodemon through the command line you need to install it globally by adding the `-g` flag to the installation like so: `npm install nodemon -g` But if you don't install it globally, you can run it as a script if you add the following line to your `package.json` file:
 
@@ -100,7 +100,7 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
   And then start the server by running either: `nodemon server.js` If you install nodemon globally, or: `npm run dev` If you're running it with npm through a script in `package.json`.
 
-  # Step 5 / CRUD - CREATE(POST)
+# Step 5 / CRUD - CREATE(POST)
 
   **CREATE** is an operation performed only by the browser if a **POST** request is sent to the server. The **POST** request can be triggered with JavaScript or through a `<form>` tag. Lets create a `<form>` tag element and add it to your `index.html` file. There are 3 things necessary for this element:
 - We need an `action` attribute
@@ -150,7 +150,7 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
   Alright now that we're parsing our form to something readable let's begin the database work.
 
-  # Step 6 / MongoDB
+# Step 6 / MongoDB
 
    The first thing we need to do to start using MongoDB is to install it with npm to use it as our database. `npm install mongodb@2.2.33 --save` It's important to install that version to work with the current setup that we have. After this we can connect to MongoDB with the `connect` method that comes with `Mongo.Client`. We need to setup the following code in our `server.js` file: **Note:** this code goes before the handlers, we will also have to move our start server code, the `listen`, into inside the MongoDB connect method. But more on this later.
 
@@ -189,7 +189,7 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
   Now if you enter something into our form and submit it, you will see an entry in your MongoDB collection. Now let's get cracking on how to display the messages to whoever visits the page.
 
-  # Step 7 / Displaying Messages
+# Step 7 / Displaying Messages
 
    Now to display the messages we need to do two things: Get the messages from MongoLab, and use a template engine to display the messages. First lets go ahead and get the messages by using the `find` method that's available in the `collection` method in junction with the `toArray` method that takes a callback function and allows us to actually use the information in the collection. Without `toArray` we would see a MongoDB object. Paste the following code under your `app.get` function after the res.sendFile() method:
 
@@ -242,4 +242,4 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
   Now we should see the messages showing up on out app! That's great! We're creating here! You will see as you submit more messages they will begin appearing one by one as you submit them! Great-great!
 
-  # Step 8 / CRUD - Update (PUT)
+# Step 8 / CRUD - Update (PUT)
