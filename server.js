@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   })
 })
 
-app.post('/quotes', (req, res) => {
+app.post('/messages', (req, res) => {
   db.collection('messages').save(req.body, (err, result) => {
     if (err)
       return console.log(err)
