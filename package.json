@@ -4,7 +4,8 @@
   "description": "Simple CRUD to show how to make a MongoDB and Express integration.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "CRUD",
@@ -17,5 +18,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/festiveox/Simple-CRUD-w-Express-and-Mongo.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "2.2.33"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
   }
 }
