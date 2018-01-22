@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient
 // Connecting to MongoDB
 var db
 
-MongoClient.connect('mongodb://mish:mish@ds263837.mlab.com:63837/balevich', (err, database) => {
+MongoClient.connect('your-mongodb-url', (err, database) => {
   if (err)
     return console.log(err)
   db = database
