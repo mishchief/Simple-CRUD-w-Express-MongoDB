@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 
+// Connecting to MongoDB
 var db
 
 MongoClient.connect('mongodb://mish:mish@ds263837.mlab.com:63837/balevich', (err, database) => {
@@ -14,10 +15,18 @@ MongoClient.connect('mongodb://mish:mish@ds263837.mlab.com:63837/balevich', (err
   })
 })
 
+// setting up ejs engine
 app.set('view engine', 'ejs')
 
+//middleware
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.use(bodyParser.json())
+
+// folder structure
+app.use(express.static('public'))
+
+// GET
 app.get('/', (req, res) => {
   db.collection('messages').find().toArray((err, result) => {
     if (err) return console.log(err)
@@ -26,6 +35,7 @@ app.get('/', (req, res) => {
   })
 })
 
+// POST
 app.post('/messages', (req, res) => {
   db.collection('messages').save(req.body, (err, result) => {
     if (err)
@@ -33,5 +43,32 @@ app.post('/messages', (req, res) => {
 
     console.log('saved to database')
     res.redirect('/')
+  })
+})
+
+// PUT
+app.put('/messages', (req, res) => {
+  db.collection('messages')
+  .findOneAndUpdate({name: req.body.targetName}, {
+    $set: {
+      name: req.body.name,
+      message: req.body.message
+    }
+  }, {
+    sort: {_id: -1},
+    upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    res.send(result)
+  })
+})
+
+// DELETE
+app.delete('/messages', (req, res) => {
+  db.collection('messages').findOneAndDelete(
+    {name: req.body.name},
+    (err, result) => {
+    if (err) return res.send(500, err)
+    res.send({message: 'The message has been deleted'})
   })
 })

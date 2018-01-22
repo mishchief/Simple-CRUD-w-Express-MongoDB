@@ -8,21 +8,26 @@
 
 <body>
   Node and Express are the best!
-
+  <div>
   <form action="/messages" method="POST">
-    <input type="text" placeholder="name" name="name">
+    <input id="name" type="text" placeholder="name" name="name">
     <input type="text" placeholder="message" name="message">
     <button type="submit">Submit</button>
   </form>
+    <button id="update"> Update to Doggerino </button>
+    <button id="delete"> Delete message</button>
+
+  </div>
 
   <ul class="messages">
     <% for(var i=0; i<messages.length; i++) {%>
       <li class="messages">
-        <span><%= messages[i].name %></span>
+        <span><%= messages[i].name + " says: " %></span>
         <span><%= messages[i].message %></span>
       </li>
       <% } %>
   </ul>
+<script src="main.js"></script>
 </body>
 
 </html>
