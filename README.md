@@ -4,13 +4,15 @@ Just a simple CRUD with Express and Mongo to explain how these work for beginner
 
 # Technologies
 
-- Node.js
+- [Node.js](https://nodejs.org/en/)
 - Express
 - MongoDB @ 2.2.33
 - es6
 - Nodemon
 - body-parser
 - Embedded JavaScript (ejs)
+
+We will use all this, some we will install along the way, others like Node.js I expect you to have already installed, I have included links to intalations on the above list.
 
 # What is?
 
@@ -28,7 +30,7 @@ Create your directory through the command line: `mkdir simple-crud` Initialize y
 
 # Step 2 / Server and using express
 
-First we gotta install Express and include it in our dependencies `npm install express --save` Then create your server file. `touch server.js` Now let's put express in that file:
+First we got to install Express and include it in our dependencies `npm install express --save` Then create your server file. `touch server.js` Now let's put express in that file:
 
 ```
   const express = require('express');
